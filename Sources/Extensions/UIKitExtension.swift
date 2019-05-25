@@ -63,11 +63,6 @@ public extension UITableView {
         interrupt: ((Changeset<C>) -> Bool)? = nil,
         setData: (C) -> Void
         ) {
-        if case .none = window, let data = stagedChangeset.last?.data {
-            setData(data)
-            return reloadData()
-        }
-
         for changeset in stagedChangeset {
             if let interrupt = interrupt, interrupt(changeset), let data = stagedChangeset.last?.data {
                 setData(data)
@@ -142,11 +137,6 @@ public extension UICollectionView {
         interrupt: ((Changeset<C>) -> Bool)? = nil,
         setData: (C) -> Void
         ) {
-        if case .none = window, let data = stagedChangeset.last?.data {
-            setData(data)
-            return reloadData()
-        }
-
         for changeset in stagedChangeset {
             if let interrupt = interrupt, interrupt(changeset), let data = stagedChangeset.last?.data {
                 setData(data)
